@@ -1,0 +1,355 @@
+﻿<Window x:Class="Wordle.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wordle" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="900" Width="700">
+    <Grid x:Name="MainGrid"  HorizontalAlignment="Center" Height="842" VerticalAlignment="Center" Width="620">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="571*"/>
+            <RowDefinition Height="217*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name ="Squares" HorizontalAlignment="Center" Height="396" Grid.Row="1" VerticalAlignment="Center" Width="330">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Grid x:Name="KeyboardRows" Height="198" Margin="65,0,65,0" Grid.Row="2" VerticalAlignment="Center" Width="490">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="KeyboardTopRow" Height="66" Margin="0,0,0,0" VerticalAlignment="Center" Width="490" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel  x:Name ="QButtonPanel" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="QButton" Click="QButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="Q" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="WButtonPanel" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="WButton" Click="WButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="W" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="EButtonPanel" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="EButton" Click="EButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="E" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="RButtonPanel" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="RButton" Click="RButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="R" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="TButtonPanel" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="TButton" Click="TButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="T" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="YButtonPanel" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="YButton" Click="YButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="Y" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="UButtonPanel" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="UButton" Click="UButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="U" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="IButtonPanel" Grid.Column="7" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="IButton" Click="IButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="I" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="OButtonPanel" Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="OButton" Click="OButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="O" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="PButtonPanel" Grid.Column="9" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="PButton" Click="PButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="P" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="KeyboardMiddleRow" Height="66" Margin="0,0,0,0" VerticalAlignment="Center" Width="424" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel  x:Name ="AButtonPanel" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="AButton" Click="AButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="A" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="SButtonPanel" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="SButton" Click="SButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="S" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="DButtonPanel" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="DButton" Click="DButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="D" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="FButtonPanel" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="FButton" Click="FButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="F" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="GButtonPanel" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="GButton" Click="GButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="G" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="HButtonPanel" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="HButton" Click="HButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="H" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="JButtonPanel" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="JButton" Click="JButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="J" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="KButtonPanel" Grid.Column="7" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="KButton" Click="KButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="K" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="LButtonPanel" Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="LButton" Click="LButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="L" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="KeyboardBottomRow" Height="66" Margin="0,0,0,0" VerticalAlignment="Center" Width="490" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="70"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel  x:Name ="EnterButtonPanel" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="62">
+                    <Button x:Name="EnterButton" Click="EnterButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="62" Content="Enter" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="BackButtonPanel" Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="62">
+                    <Button x:Name="BackButton" Click="BackButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="62" Content="Back" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="ZButtonPanel" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="ZButton" Click="ZButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="Z" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="XButtonPanel" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="XButton" Click="XButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="X" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="CButtonPanel" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="CButton" Click="CButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="C" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="VButtonPanel" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="VButton" Click="VButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="V" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="BButtonPanel" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="BButton" Click="BButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="B" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="NButtonPanel" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="NButton" Click="NButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="N" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel  x:Name ="MButtonPanel" Grid.Column="7" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41">
+                    <Button x:Name="MButton" Click="MButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="41" Content="M" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Name ="TextBoxGrid" HorizontalAlignment="Left" Height="57" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="186" Visibility="Visible">
+            <xctk:MaskedTextBox x:Name="TextBox1" Mask="L" TextWrapping="Wrap" PreviewKeyDown="PreviewKeyDown" Margin="10,10,10,10" />
+            <Rectangle HorizontalAlignment="Left" Height="53" Stroke="White" VerticalAlignment="Center" Width="226" Fill="White" Visibility="Visible"/>
+        </Grid>
+        <StackPanel HorizontalAlignment="Left" Height="34" Margin="507,0,0,0" VerticalAlignment="Center" Width="103">
+            <Button x:Name="NewWordButton" Click="NewWordButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="103" Content="New Word" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="#FFD3D6DA" Style="{DynamicResource NoHover}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+        <StackPanel x:Name="OutcomeDisplay" HorizontalAlignment="Center" Height="34" VerticalAlignment="Center" Width="100" Visibility="Hidden">
+            <Button x:Name="OutcomeDisplayText" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="103" Content="" FontSize="18" FontWeight="SemiBold" FontFamily="Clear Sans" BorderThickness="0" Background="Black" Style="{DynamicResource NoHover}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
